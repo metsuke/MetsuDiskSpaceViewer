@@ -1,92 +1,77 @@
 # MetsuDiskSpaceViewer
 
-![License](https://img.shields.io/github/license/metsuke/MetsuDiskSpaceViewer?style=flat-square)
-![Release](https://img.shields.io/github/v/release/metsuke/MetsuDiskSpaceViewer?style=flat-square)
-![Repo Size](https://img.shields.io/github/repo-size/metsuke/MetsuDiskSpaceViewer?style=flat-square)
+Script de apoyo en el desarrollo de **MetsuOS** para analizar y visualizar dónde se consume el espacio en disco, especialmente en volúmenes externos.
 
-**MetsuDiskSpaceViewer** es una herramienta de escritorio ligera y eficiente diseñada para analizar el uso del almacenamiento en tus discos duros. Permite visualizar qué archivos y directorios están ocupando más espacio, facilitando las tareas de limpieza y mantenimiento del sistema.
+## Descripción
 
----
+Esta herramienta permite escanear directorios o unidades completas para identificar rápidamente qué carpetas y archivos ocupan más espacio. Está pensada para:
 
-## ✨ Características
+- Depuración de almacenamiento durante el desarrollo de MetsuOS
+- Análisis de discos externos, unidades secundarias o montajes grandes
+- Usuarios que necesitan una alternativa simple y sin dependencias pesadas
 
-* **Escaneo de Alta Velocidad:** Analiza rápidamente unidades completas o carpetas específicas.
-* **Visualización Detallada:** Muestra el tamaño de archivos y carpetas en un formato jerárquico y fácil de leer.
-* **Interfaz Intuitiva:** Diseño limpio que permite navegar por la estructura de archivos sin complicaciones.
-* **Gestión Directa:** Opción para abrir ubicaciones de archivos directamente en el Explorador de Windows.
-* **Sin Instalación:** Aplicación portable que no ensucia el registro de tu sistema.
+## Características actuales
 
-## 📸 Captura de Pantalla
+- Escaneo recursivo de directorios y subdirectorios
+- Cálculo preciso de tamaños (archivos + carpetas) con caches para evitar relectura continua (esto puede causar discrepancias en la exactitud, pero recordemos que el objetivo es detectar rapido donde debemos actuar, no hacer una auditoria)
+- Ordenación por tamaño descendente
+- Salida legible en consola (con tamaños en formato humano: KB, MB, GB…)
+- Dos versiones del script:
+  - `disk-space-view.py` → implementación básica
+  - `disk-space-view-pro.py` → versión mejorada / extendida
 
-> [!TIP]
-> *Añade aquí una captura de pantalla de la aplicación para que los usuarios vean la interfaz antes de descargarla.*
-> 
-> `![Preview](https://link-a-tu-imagen.png)`
+## Requisitos
 
----
+- Python 3.8 o superior
+- Módulos estándar de Python (sin dependencias externas en la versión actual)
 
-## 🚀 Instalación y Uso
+## Instalación y uso rápido
 
-1.  Descarga la última versión desde la sección de **[Releases](https://github.com/metsuke/MetsuDiskSpaceViewer/releases)**.
-2.  Extrae el contenido del archivo `.zip` (si aplica).
-3.  Ejecuta `MetsuDiskSpaceViewer.exe`.
-4.  Selecciona la unidad que deseas analizar y presiona **Scan**.
+1. Clona el repositorio:
 
-## 🛠️ Compilación (Desarrolladores)
+   ```bash
+   git clone https://github.com/metsuke/MetsuDiskSpaceViewer.git
+   cd MetsuDiskSpaceViewer
+   ```
 
-Si deseas compilar el proyecto por tu cuenta, asegúrate de tener instalado:
-* Visual Studio 2022 o superior.
-* Carga de trabajo: **Desarrollo de escritorio de .NET**.
+2. Ejecuta uno de los scripts directamente:
 
-```bash
-# Clonar el repositorio
-git clone [https://github.com/metsuke/MetsuDiskSpaceViewer.git](https://github.com/metsuke/MetsuDiskSpaceViewer.git)
+   ```bash
+   # Versión básica
+   python disk-space-view.py
 
-# Abrir la solución (.sln) en Visual Studio y compilar (F6)
+   # Versión mejorada
+   python disk-space-view-pro.py
+   ```
 
-```
+## Roadmap / Próximos pasos
 
----
+- Quiza incluir trabajo con root, por ahora centrado en Volumenes extenos
+- Comprobaciones multiplataforma, pora ahora centrado en MacOS
 
-## ⚙️ Tecnologías Utilizadas
+## Contribuir
 
-* **Lenguaje:** C#
-* **Framework:** .NET (Windows Forms / WPF)
-* **IDE:** Visual Studio
+Las contribuciones son bienvenidas, especialmente para:
 
-## 🤝 Contribuir
+- Mejorar la usabilidad de los scripts actuales
 
-Las contribuciones son bienvenidas. Si encuentras un error o tienes una idea para una mejora:
+Pasos estándar:
 
-1. Haz un **Fork** del proyecto.
-2. Crea una rama para tu mejora (`git checkout -b feature/MejoraIncreible`).
-3. Haz un **Commit** de tus cambios (`git commit -m 'Añadir nueva funcionalidad'`).
-4. Haz un **Push** a la rama (`git push origin feature/MejoraIncreible`).
-5. Abre un **Pull Request**.
+1. Haz fork del repositorio
+2. Crea una rama descriptiva (`git checkout -b mejora/progreso-bar`)
+3. Commitea tus cambios
+4. Abre un Pull Request
 
----
+## Licencia
 
-## 📄 Licencia
+**GPL-3.0**  
+Consulta el archivo [LICENSE](./LICENSE) para más detalles.
 
-Este proyecto está bajo la Licencia **MIT**. Consulta el archivo [LICENSE](https://www.google.com/search?q=LICENSE) para más detalles.
+## Autor
 
-## 👤 Autor
-
-**Metsuke**
-
-* GitHub: [@metsuke](https://github.com/metsuke)
+**Metsuke**  
+[@metsuke](https://github.com/metsuke)  
 
 ---
 
-*Desarrollado con el objetivo de simplificar la gestión de almacenamiento.*
-
-```
-
-### ¿Cómo aplicarlo?
-1. Entra en tu repositorio en GitHub.
-2. Haz clic en **Add file** > **Create new file**.
-3. Ponle de nombre `README.md`.
-4. Pega el código de arriba.
-5. Haz clic en **Commit changes...** abajo a la derecha.
-
-¿Te gustaría que añada alguna sección específica sobre cómo filtrar archivos o algún comando técnico adicional?
+Herramienta creada para facilitar el desarrollo y mantenimiento de **MetsuOS**.
